@@ -183,7 +183,7 @@ module.exports = class Cody extends Client {
                 if (file.endsWith('.js')) {
                     const Command = require(filePath)
                     const commandName = file.replace(/.js/g,'').toLowerCase()
-                    const command = new Command(commandName, this)
+                    const command = new Command(commandName,filePath+commandName+'.js', this)
                     this.commands.set(commandName, command)
                 } else if (statSync(filePath).isDirectory()) {
                     this.initializeCommands(filePath)
